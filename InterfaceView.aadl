@@ -1,0 +1,285 @@
+---------------------------------------------------
+-- AADL2.2
+-- TASTE type interfaceview
+-- 
+-- generated code: do not edit
+---------------------------------------------------
+
+
+PACKAGE interfaceview::IV::gnc_controller
+PUBLIC
+
+WITH Taste;
+WITH DataView;
+WITH TASTE_IV_Properties;
+WITH interfaceview::IV::tmtc_handler;
+
+SUBPROGRAM PI_get_altitude
+FEATURES
+    altitude : OUT PARAMETER DataView::Altitude {
+       Taste::encoding => NATIVE;
+    };
+END PI_get_altitude;
+
+SUBPROGRAM IMPLEMENTATION PI_get_altitude.others
+END PI_get_altitude.others;
+
+
+SUBPROGRAM PI_get_velocity
+FEATURES
+    velocity : OUT PARAMETER DataView::Velocity {
+       Taste::encoding => NATIVE;
+    };
+END PI_get_velocity;
+
+SUBPROGRAM IMPLEMENTATION PI_get_velocity.others
+END PI_get_velocity.others;
+
+
+SUBPROGRAM PI_get_acceleration
+FEATURES
+    acceleration : OUT PARAMETER DataView::Acceleration {
+       Taste::encoding => NATIVE;
+    };
+END PI_get_acceleration;
+
+SUBPROGRAM IMPLEMENTATION PI_get_acceleration.others
+END PI_get_acceleration.others;
+
+
+
+SYSTEM gnc_controller
+FEATURES
+   PI_get_altitude : PROVIDES SUBPROGRAM ACCESS interfaceview::IV:: gnc_controller:: PI_get_altitude.others {
+      Taste::InterfaceName           => "get_altitude";            
+      Taste::RCMoperationKind        => unprotected;      
+      -- Unrecognized property: enable_multicast => false      
+      -- Unrecognized property: layer => default      
+      -- Unrecognized property: required_system_element => NO      
+      Compute_Execution_Time => 0 ms .. 0 ms;      
+   };
+   PI_get_velocity : PROVIDES SUBPROGRAM ACCESS interfaceview::IV:: gnc_controller:: PI_get_velocity.others {
+      Taste::InterfaceName           => "get_velocity";            
+      Taste::RCMoperationKind        => unprotected;      
+      -- Unrecognized property: enable_multicast => false      
+      -- Unrecognized property: layer => default      
+      -- Unrecognized property: required_system_element => NO      
+      Compute_Execution_Time => 0 ms .. 0 ms;      
+   };
+   PI_get_acceleration : PROVIDES SUBPROGRAM ACCESS interfaceview::IV:: gnc_controller:: PI_get_acceleration.others {
+      Taste::InterfaceName           => "get_acceleration";            
+      Taste::RCMoperationKind        => unprotected;      
+      -- Unrecognized property: enable_multicast => false      
+      -- Unrecognized property: layer => default      
+      -- Unrecognized property: required_system_element => NO      
+      Compute_Execution_Time => 0 ms .. 0 ms;      
+   };
+PROPERTIES
+   -- ignored property: name = gnc_controller
+   -- ignored property: is_type = NO
+   Source_Language => (Simulink);
+   -- ignored property: default_implementation = default
+   -- ignored property: fixed_system_element = NO
+   -- ignored property: required_system_element = NO
+   Taste::Startup_Priority => 1;
+   -- ignored property: FPGA_Configurations = 
+END gnc_controller;
+
+SYSTEM IMPLEMENTATION gnc_controller.others
+END gnc_controller.others;
+
+END interfaceview::IV::gnc_controller;
+
+
+
+PACKAGE interfaceview::IV::tmtc_handler
+PUBLIC
+
+WITH Taste;
+WITH DataView;
+WITH TASTE_IV_Properties;
+WITH interfaceview::IV::gnc_controller;
+WITH interfaceview::IV::parachute_deployer;
+
+SUBPROGRAM RI_deploy_parachute
+END RI_deploy_parachute;
+
+SUBPROGRAM IMPLEMENTATION RI_deploy_parachute.others
+END RI_deploy_parachute.others;
+
+
+SUBPROGRAM RI_get_acceleration
+FEATURES
+    acceleration : OUT PARAMETER DataView::Acceleration {
+       Taste::encoding => NATIVE;
+    };
+END RI_get_acceleration;
+
+SUBPROGRAM IMPLEMENTATION RI_get_acceleration.others
+END RI_get_acceleration.others;
+
+
+SUBPROGRAM RI_get_velocity
+FEATURES
+    velocity : OUT PARAMETER DataView::Velocity {
+       Taste::encoding => NATIVE;
+    };
+END RI_get_velocity;
+
+SUBPROGRAM IMPLEMENTATION RI_get_velocity.others
+END RI_get_velocity.others;
+
+
+SUBPROGRAM RI_get_altitude
+FEATURES
+    altitude : OUT PARAMETER DataView::Altitude {
+       Taste::encoding => NATIVE;
+    };
+END RI_get_altitude;
+
+SUBPROGRAM IMPLEMENTATION RI_get_altitude.others
+END RI_get_altitude.others;
+
+
+
+SYSTEM tmtc_handler
+FEATURES
+   RI_deploy_parachute : REQUIRES SUBPROGRAM ACCESS interfaceview::IV:: parachute_deployer:: PI_deploy_parachute.others {
+      Taste::labelInheritance        => "true";
+      Taste::InterfaceName           => "deploy_parachute";            
+      Taste::RCMoperationKind        => sporadic;      
+      -- Unrecognized property: enable_multicast => false      
+      -- Unrecognized property: layer => default      
+      -- Unrecognized property: required_system_element => NO      
+      Compute_Execution_Time => 0 ms .. 0 ms;      
+      Taste::Associated_Queue_Size   => 1;      
+      Taste::Interface_Stack_Size    => 1024;      
+      Taste::Interface_Priority      => 1;      
+      Taste::RCMperiod               => 0 ms;      
+   };
+   RI_get_acceleration : REQUIRES SUBPROGRAM ACCESS interfaceview::IV:: gnc_controller:: PI_get_acceleration.others {
+      Taste::labelInheritance        => "true";
+      Taste::InterfaceName           => "get_acceleration";            
+      Taste::RCMoperationKind        => unprotected;      
+      -- Unrecognized property: enable_multicast => false      
+      -- Unrecognized property: layer => default      
+      -- Unrecognized property: required_system_element => NO      
+      Compute_Execution_Time => 0 ms .. 0 ms;      
+   };
+   RI_get_velocity : REQUIRES SUBPROGRAM ACCESS interfaceview::IV:: gnc_controller:: PI_get_velocity.others {
+      Taste::labelInheritance        => "true";
+      Taste::InterfaceName           => "get_velocity";            
+      Taste::RCMoperationKind        => unprotected;      
+      -- Unrecognized property: enable_multicast => false      
+      -- Unrecognized property: layer => default      
+      -- Unrecognized property: required_system_element => NO      
+      Compute_Execution_Time => 0 ms .. 0 ms;      
+   };
+   RI_get_altitude : REQUIRES SUBPROGRAM ACCESS interfaceview::IV:: gnc_controller:: PI_get_altitude.others {
+      Taste::labelInheritance        => "true";
+      Taste::InterfaceName           => "get_altitude";            
+      Taste::RCMoperationKind        => unprotected;      
+      -- Unrecognized property: enable_multicast => false      
+      -- Unrecognized property: layer => default      
+      -- Unrecognized property: required_system_element => NO      
+      Compute_Execution_Time => 0 ms .. 0 ms;      
+   };
+PROPERTIES
+   -- ignored property: name = tmtc_handler
+   -- ignored property: is_type = NO
+   Source_Language => (SDL);
+   -- ignored property: default_implementation = default
+   -- ignored property: fixed_system_element = NO
+   -- ignored property: required_system_element = NO
+   Taste::Startup_Priority => 1;
+   -- ignored property: FPGA_Configurations = 
+END tmtc_handler;
+
+SYSTEM IMPLEMENTATION tmtc_handler.others
+END tmtc_handler.others;
+
+END interfaceview::IV::tmtc_handler;
+
+
+
+PACKAGE interfaceview::IV::parachute_deployer
+PUBLIC
+
+WITH Taste;
+WITH DataView;
+WITH TASTE_IV_Properties;
+WITH interfaceview::IV::tmtc_handler;
+
+SUBPROGRAM PI_deploy_parachute
+END PI_deploy_parachute;
+
+SUBPROGRAM IMPLEMENTATION PI_deploy_parachute.others
+END PI_deploy_parachute.others;
+
+
+
+SYSTEM parachute_deployer
+FEATURES
+   PI_deploy_parachute : PROVIDES SUBPROGRAM ACCESS interfaceview::IV:: parachute_deployer:: PI_deploy_parachute.others {
+      Taste::InterfaceName           => "deploy_parachute";            
+      Taste::RCMoperationKind        => sporadic;      
+      -- Unrecognized property: enable_multicast => false      
+      -- Unrecognized property: layer => default      
+      -- Unrecognized property: required_system_element => NO      
+      Compute_Execution_Time => 0 ms .. 0 ms;      
+      Taste::Associated_Queue_Size   => 1;      
+      Taste::Interface_Stack_Size    => 1024;      
+      Taste::Interface_Priority      => 1;      
+      Taste::RCMperiod               => 0 ms;      
+   };
+PROPERTIES
+   -- ignored property: name = parachute_deployer
+   -- ignored property: is_type = NO
+   Source_Language => (C);
+   -- ignored property: default_implementation = default
+   -- ignored property: fixed_system_element = NO
+   -- ignored property: required_system_element = NO
+   Taste::Startup_Priority => 1;
+   -- ignored property: FPGA_Configurations = 
+END parachute_deployer;
+
+SYSTEM IMPLEMENTATION parachute_deployer.others
+END parachute_deployer.others;
+
+END interfaceview::IV::parachute_deployer;
+
+
+PACKAGE interfaceview::IV
+PUBLIC
+
+WITH interfaceview::IV::gnc_controller;
+WITH interfaceview::IV::tmtc_handler;
+WITH interfaceview::IV::parachute_deployer;
+WITH Taste;
+WITH DataView;
+WITH TASTE_IV_Properties;
+
+SYSTEM interfaceview
+PROPERTIES
+   Taste::dataView     => ("DataView");
+   TASTE::dataViewPath => ("DataView.aadl");
+END interfaceview;
+
+SYSTEM IMPLEMENTATION interfaceview.others
+SUBCOMPONENTS
+  gnc_controller : SYSTEM interfaceview::IV::gnc_controller::gnc_controller.others;
+  tmtc_handler : SYSTEM interfaceview::IV::tmtc_handler::tmtc_handler.others;
+  parachute_deployer : SYSTEM interfaceview::IV::parachute_deployer::parachute_deployer.others;
+CONNECTIONS
+   tmtc_handler_RI_get_altitude : SUBPROGRAM ACCESS gnc_controller.PI_get_altitude -> tmtc_handler.RI_get_altitude;
+   tmtc_handler_RI_deploy_parachute : SUBPROGRAM ACCESS parachute_deployer.PI_deploy_parachute -> tmtc_handler.RI_deploy_parachute;
+   tmtc_handler_RI_get_acceleration : SUBPROGRAM ACCESS gnc_controller.PI_get_acceleration -> tmtc_handler.RI_get_acceleration;
+   tmtc_handler_RI_get_velocity : SUBPROGRAM ACCESS gnc_controller.PI_get_velocity -> tmtc_handler.RI_get_velocity;
+END interfaceview.others;
+
+PROPERTIES
+   Taste::dataView     => ("DataView");
+   Taste::dataViewPath => ("DataView.aadl");
+   Taste::coordinates  => "0 0 297000 210000";
+   Taste::version      => "3.0";
+END interfaceview::IV;
