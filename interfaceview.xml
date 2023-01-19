@@ -8,6 +8,21 @@
 
 <Function name="gnc_controller" is_type="NO" language="SDL" default_implementation="default" fixed_system_element="NO" required_system_element="NO" FPGA_Configurations="" startup_priority="1">
     <Property name="Taste::coordinates" value="85100 31100 110700 40200"/>
+<Provided_Interface name="get_altitude" kind="Unprotected" layer="default" required_system_element="NO" wcet="0">
+    <Output_Parameter name="altitude" type="Altitude" encoding="NATIVE"/>
+    <Property name="Taste::coordinates" value="85100 39000"/>
+</Provided_Interface>
+
+<Provided_Interface name="get_velocity" kind="Unprotected" layer="default" required_system_element="NO" wcet="0">
+    <Output_Parameter name="velocity" type="Velocity" encoding="NATIVE"/>
+    <Property name="Taste::coordinates" value="85100 35800"/>
+</Provided_Interface>
+
+<Provided_Interface name="get_acceleration" kind="Unprotected" layer="default" required_system_element="NO" wcet="0">
+    <Output_Parameter name="acceleration" type="Acceleration" encoding="NATIVE"/>
+    <Property name="Taste::coordinates" value="85100 32200"/>
+</Provided_Interface>
+
     <Implementations>
         <Implementation name="default" language="SDL"/>
     </Implementations>
@@ -15,6 +30,10 @@
 
 <Function name="parachute_deployer" is_type="NO" language="SDL" default_implementation="default" fixed_system_element="NO" required_system_element="NO" FPGA_Configurations="" startup_priority="1">
     <Property name="Taste::coordinates" value="38500 55300 58500 65800"/>
+<Provided_Interface name="deploy_parachute" kind="Sporadic" layer="default" required_system_element="NO" priority="1" wcet="0" stack_size="1024" queue_size="1" miat="0">
+    <Property name="Taste::coordinates" value="42400 55300"/>
+</Provided_Interface>
+
     <Implementations>
         <Implementation name="default" language="SDL"/>
     </Implementations>

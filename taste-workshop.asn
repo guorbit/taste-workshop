@@ -38,9 +38,9 @@ BEGIN
 --  -- You can also declare constants
 --  myVar       MySeqOf     ::= { hello, world }
 
-Acceleration    := REAL (0..100)
-Velocity        := REAL (0..1000)
-Altitude        := REAL (0..10000)
+Acceleration    ::= REAL (0..100)
+Velocity        ::= REAL (0..1000)
+Altitude        ::= REAL (0..10000)
 
 END
 
